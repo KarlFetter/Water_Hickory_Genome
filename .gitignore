@@ -1,0 +1,40 @@
+# Data files
+*.bam
+*.bam.pbi
+*.bam.bai
+*.fastq
+*.fastq.gz
+*.fasta
+*.fasta.gz
+*.fa
+*.fa.gz
+*.fq
+*.fq.gz
+*.gfa
+*.jf
+
+# SLURM output
+*.out
+*.err
+
+# NanoPlot output (large HTML/images)
+**/nanoplot_*/
+**/NanoPlot-report.html
+
+# Centrifuge intermediate files
+*_combined.fastq.gz
+*_classification.tsv
+
+# Jellyfish intermediate
+*.jf
+
+# BUSCO intermediate files
+**/busco_downloads/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+*.code-workspace

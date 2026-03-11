@@ -1,0 +1,6 @@
+# Shell scripts must use LF (they run on Linux HPC)
+*.sh text eol=lf
+*.py text eol=lf
+
+# Keep Windows line endings for Windows-only files
+*.ps1 text eol=crlf
