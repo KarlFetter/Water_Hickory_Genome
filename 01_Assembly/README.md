@@ -4,6 +4,18 @@
 
 ---
 
+## Assembly Workflow
+1. Convert HiFi BAM to FASTQ
+2. Raw read quality assessment (seqkit stats)
+3. Adapter filtering (HiFiAdapterFilt)
+4. Contamination screening (Centrifuge)
+5. Post-QC read assessment
+6. Genome size estimation (Jellyfish + GenomeScope2)
+7. *De novo* assembly (hifiasm)
+8. Assembly evaluation (QUAST, BUSCO, seqkit, etc.)
+
+---
+
 ## Raw Reads
 
 **Platform:** PacBio Vega  
