@@ -46,8 +46,8 @@ Water Hickory/
 - **Scheduler:** SLURM
 - **Allocation:** `tgl_seqdata`
 
-## Results
-- **[Assembly Results](01_Assembly/README.md)** — Raw read QC, assembly metrics, BUSCO scores, and figures
+## Workflow & Results
+- **[Assembly](01_Assembly/README.md)** — Raw read QC, assembly metrics, BUSCO scores, and figures
 
 ## Assembly Workflow
 1. Convert HiFi BAM to FASTQ
