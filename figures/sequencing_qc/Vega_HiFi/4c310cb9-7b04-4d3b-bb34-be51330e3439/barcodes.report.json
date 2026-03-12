@@ -1,0 +1,229 @@
+{
+    "_comment": "Generated with pbcommand version  at 2026-03-05T13:38:31.577058",
+    "attributes": [
+        {
+            "id": "ccs_demux_stats.number_of_ccs_reads",
+            "name": "\u2265Q20 Reads",
+            "value": 4935257
+        },
+        {
+            "id": "ccs_demux_stats.total_number_of_ccs_bases",
+            "name": "\u2265Q20 Yield (bp)",
+            "value": 64756226301
+        },
+        {
+            "id": "ccs_demux_stats.mean_ccs_readlength",
+            "name": "\u2265Q20 Read Length (mean, bp)",
+            "value": 13121
+        },
+        {
+            "id": "ccs_demux_stats.median_ccs_readlength",
+            "name": "HiFi Read Length (median, bp)",
+            "value": 12372
+        },
+        {
+            "id": "ccs_demux_stats.ccs_readlength_n50",
+            "name": "HiFi Read Length N50 (bp)",
+            "value": 14979
+        },
+        {
+            "id": "ccs_demux_stats.median_accuracy",
+            "name": "\u2265Q20 Read Quality (median)",
+            "value": "Q37"
+        },
+        {
+            "id": "ccs_demux_stats.median_qv",
+            "name": "\u2265Q20 Read Quality (median)",
+            "value": 37
+        }
+    ],
+    "dataset_uuids": [
+        "4c310cb9-7b04-4d3b-bb34-be51330e3439"
+    ],
+    "id": "ccs_demux_stats",
+    "plotGroups": [
+        {
+            "id": "ccs_demux_stats.readlength_group",
+            "legend": null,
+            "plots": [
+                {
+                    "caption": null,
+                    "id": "ccs_demux_stats.readlength_group.all_readlength_hist",
+                    "image": "ccs_all_readlength_hist_plot.png",
+                    "plotType": "image",
+                    "thumbnail": "ccs_all_readlength_hist_plot_thumb.png",
+                    "title": null
+                },
+                {
+                    "caption": null,
+                    "id": "ccs_demux_stats.readlength_group.hifi_read_length_yield",
+                    "image": "ccs_hifi_read_length_yield_plot.png",
+                    "plotType": "image",
+                    "thumbnail": "ccs_hifi_read_length_yield_plot_thumb.png",
+                    "title": null
+                }
+            ],
+            "thumbnail": "ccs_all_readlength_hist_plot_thumb.png",
+            "title": "Read Length Distribution"
+        },
+        {
+            "id": "ccs_demux_stats.accuracy_group",
+            "legend": null,
+            "plots": [
+                {
+                    "caption": "Read Quality Distribution",
+                    "id": "ccs_demux_stats.accuracy_group.accuracy_hist",
+                    "image": "ccs_accuracy_hist.png",
+                    "plotType": "image",
+                    "thumbnail": "ccs_accuracy_hist_thumb.png",
+                    "title": "Read Quality Distribution"
+                }
+            ],
+            "thumbnail": "ccs_accuracy_hist_thumb.png",
+            "title": "Read Quality Distribution"
+        }
+    ],
+    "tables": [
+        {
+            "columns": [
+                {
+                    "header": "Read Length, bp",
+                    "id": "ccs_demux_stats.hifi_length_summary.read_length",
+                    "values": [
+                        "\u2265 0",
+                        "\u2265 5,000",
+                        "\u2265 10,000",
+                        "\u2265 15,000",
+                        "\u2265 20,000",
+                        "\u2265 25,000",
+                        "\u2265 30,000",
+                        "\u2265 35,000",
+                        "\u2265 40,000"
+                    ]
+                },
+                {
+                    "header": "Reads",
+                    "id": "ccs_demux_stats.hifi_length_summary.n_reads",
+                    "values": [
+                        4935257,
+                        4550688,
+                        3341646,
+                        1601069,
+                        630380,
+                        228022,
+                        77352,
+                        25016,
+                        7847
+                    ]
+                },
+                {
+                    "header": "Reads (%)",
+                    "id": "ccs_demux_stats.hifi_length_summary.reads_pct",
+                    "values": [
+                        100.0,
+                        92.20772089477812,
+                        67.70966537304946,
+                        32.44145137730416,
+                        12.772992368989092,
+                        4.620265976017055,
+                        1.5673347912783469,
+                        0.5068834307919527,
+                        0.15899881201728705
+                    ]
+                },
+                {
+                    "header": "Yield (bp)",
+                    "id": "ccs_demux_stats.hifi_length_summary.yield",
+                    "values": [
+                        64756226301,
+                        63236759846,
+                        53890629656,
+                        32293870906,
+                        15634354185,
+                        6736467055,
+                        2657235531,
+                        979765895,
+                        343880391
+                    ]
+                },
+                {
+                    "header": "Yield (%)",
+                    "id": "ccs_demux_stats.hifi_length_summary.yield_pct",
+                    "values": [
+                        100.0,
+                        97.6535592918321,
+                        83.22076923615883,
+                        49.86990865695536,
+                        24.14339914177267,
+                        10.402809798840876,
+                        4.103444074471902,
+                        1.5130064720662544,
+                        0.5310383427866451
+                    ]
+                }
+            ],
+            "id": "ccs_demux_stats.hifi_length_summary",
+            "title": "HiFi Read Length Summary"
+        },
+        {
+            "columns": [
+                {
+                    "header": "Read Quality, Phred",
+                    "id": "ccs_demux_stats.read_quality_summary.read_qv",
+                    "values": [
+                        "\u2265 Q20",
+                        "\u2265 Q30",
+                        "\u2265 Q40",
+                        "\u2265 Q50"
+                    ]
+                },
+                {
+                    "header": "Reads",
+                    "id": "ccs_demux_stats.read_quality_summary.n_reads",
+                    "values": [
+                        4935257,
+                        3903630,
+                        1853663,
+                        498902
+                    ]
+                },
+                {
+                    "header": "Reads (%)",
+                    "id": "ccs_demux_stats.read_quality_summary.reads_pct",
+                    "values": [
+                        100.0,
+                        79.09679273034818,
+                        37.559604292137166,
+                        10.108936576149935
+                    ]
+                },
+                {
+                    "header": "Yield (bp)",
+                    "id": "ccs_demux_stats.read_quality_summary.yield",
+                    "values": [
+                        64756226301,
+                        47235838496,
+                        17197845228,
+                        3084204096
+                    ]
+                },
+                {
+                    "header": "Yield (%)",
+                    "id": "ccs_demux_stats.read_quality_summary.yield_pct",
+                    "values": [
+                        100.0,
+                        72.94408768731874,
+                        26.55782495425374,
+                        4.762791583413149
+                    ]
+                }
+            ],
+            "id": "ccs_demux_stats.read_quality_summary",
+            "title": "Read Quality Summary"
+        }
+    ],
+    "tags": [],
+    "title": "Report ccs_demux_stats",
+    "uuid": "31b7f6e8-b958-4286-9275-1d1b5c6cad4e",
+    "version": "1.0.1"
+}

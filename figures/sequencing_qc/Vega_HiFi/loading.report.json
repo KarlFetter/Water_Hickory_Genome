@@ -1,0 +1,20 @@
+{
+    "_comment": "Generated with pbcommand version  at 2026-03-05T13:37:23.478145",
+    "attributes": [
+        {
+            "id": "loading_xml_report.loading_level",
+            "name": "Loading Level (%)",
+            "value": 0.49787
+        }
+    ],
+    "dataset_uuids": [
+        "094360fa-a0d3-490c-893b-b19a4f580b18"
+    ],
+    "id": "loading_xml_report",
+    "plotGroups": [],
+    "tables": [],
+    "tags": [],
+    "title": "Loading Report",
+    "uuid": "02d80fda-9c2b-4e43-a853-9e19ccf4631f",
+    "version": "1.0.1"
+}

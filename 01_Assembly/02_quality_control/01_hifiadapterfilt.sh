@@ -21,9 +21,9 @@
 module load blast+
 module load bamtools
 
-# HiFiAdapterFilt path (adjust if installed elsewhere)
-export PATH=${PATH}:~/bin/HiFiAdapterFilt
-export PATH=${PATH}:~/bin/HiFiAdapterFilt/DB
+# Set up paths to HiFiAdapterFilt
+export PATH=$PATH:~/bin/HiFiAdapterFilt
+export PATH=$PATH:~/bin/HiFiAdapterFilt/DB
 
 THREADS=8
 INDIR=/90daydata/tgl_seqdata/carya_acquatica/assembly/01_raw_reads
@@ -36,7 +36,7 @@ cd ${OUTDIR}
 ln -sf ${INDIR}/carya_aquatica_hifi.fastq.gz .
 
 # Run adapter filtering
-bash HiFiAdapterFilt.sh \
+bash hifiadapterfilt.sh  \
     -p carya_aquatica_hifi \
     -t ${THREADS} \
     -o ${OUTDIR}

@@ -46,9 +46,12 @@ Water Hickory/
 - **Scheduler:** SLURM
 - **Allocation:** `tgl_seqdata`
 
+## Results
+- **[Assembly Results](01_Assembly/README.md)** — Raw read QC, assembly metrics, BUSCO scores, and figures
+
 ## Assembly Workflow
 1. Convert HiFi BAM to FASTQ
-2. Raw read quality assessment (seqkit stats, NanoPlot)
+2. Raw read quality assessment (seqkit stats)
 3. Adapter filtering (HiFiAdapterFilt)
 4. Contamination screening (Centrifuge)
 5. Post-QC read assessment
