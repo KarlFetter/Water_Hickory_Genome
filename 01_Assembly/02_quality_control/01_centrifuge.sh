@@ -21,7 +21,7 @@ module load seqkit
 
 THREADS=8
 DB=/project/tgl_seqdata/databases/centrifuge/hpvf
-READS=/90daydata/tgl_seqdata/carya_acquatica/assembly/02_quality_control/adapter_filt/carya_aquatica_hifi.filt.fastq.gz
+READS=/90daydata/tgl_seqdata/carya_acquatica/assembly/01_raw_reads/carya_aquatica_hifi.fastq.gz
 OUTDIR=/90daydata/tgl_seqdata/carya_acquatica/assembly/02_quality_control/centrifuge
 
 mkdir -p ${OUTDIR}
@@ -54,6 +54,20 @@ seqkit grep -f ${OUTDIR}/unclassified_ids.txt \
     -o ${OUTDIR}/carya_aquatica_hifi_clean.fastq.gz
 
 echo "$(date): Clean reads extracted."
+
+# Extract contaminant read IDs (classified reads)
+grep -v 'unclassified' ${OUTDIR}/classification.tsv | \
+    awk 'NR>1 {print $1}' | \
+    sort | \
+    uniq > ${OUTDIR}/contaminant_ids.txt
+
+# Extract contaminant reads
+echo "$(date): Extracting contaminant reads..."
+seqkit grep -f ${OUTDIR}/contaminant_ids.txt \
+    ${READS} \
+    -o ${OUTDIR}/carya_aquatica_hifi_contaminants.fastq.gz
+
+echo "$(date): Contaminant reads extracted."
 
 # ============================================================
 # Summary statistics
