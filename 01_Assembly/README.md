@@ -141,10 +141,6 @@ Assemblies were made from the sequences without cleaning with centrifuge (first 
 | Largest Contig | 58087373 | 58087373 | 43532277 | 3200719 | 2948787 | 3311791 |
 | Total Length (QUAST) | 689247006 | 688655421 | 666170333 | 727511574 | 676878358 | 638424009 |
 | GC (%) | 36.37 | 36.35 | 36.29 | 36.08 | 36.09 | 36.10 |
-| N50 | 39200864 | 39200864 | 30684502 | 436350 | 224044 | 231258 |
-| N75 | N/A | N/A | N/A | N/A | N/A | N/A |
-| L50 | 8 | 8 | 10 | 495 | 897 | 810 |
-| L75 | N/A | N/A | N/A | N/A | N/A | N/A |
 | BUSCO Complete (%) | 98.7 | 98.7 | 98.7 | 96.9 | 93.9 | 92.9 |
 | BUSCO Single-copy (%) | 91.0 | 91.0 | 91.6 | 86.2 | 85.3 | 85.0 |
 | BUSCO Duplicated (%) | 7.7 | 7.7 | 7.1 | 10.7 | 8.6 | 7.9 |
