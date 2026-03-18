@@ -16,24 +16,33 @@
 # Convert hifiasm GFA output to FASTA
 # ============================================================
 
-INDIR=/90daydata/tgl_seqdata/carya_acquatica/assembly/04_assembly/hifiasm
 PREFIX=carya_aquatica
 
-cd ${INDIR}
+ASSEMBLIES=(
+    "/90daydata/tgl_seqdata/carya_acquatica/assembly/04_assembly/hifiasm/hifiasm_centrifuge_reads"
+    "/90daydata/tgl_seqdata/carya_acquatica/assembly/04_assembly/hifiasm/reads_from_vega"
+)
 
-# Convert primary contigs
-awk '/^S/{print ">"$2;print $3}' ${PREFIX}.bp.p_ctg.gfa > ${PREFIX}.bp.p_ctg.fa
+for INDIR in "${ASSEMBLIES[@]}"; do
+    echo "$(date): Processing ${INDIR}"
+    cd ${INDIR}
 
-# Convert haplotype 1 contigs
-awk '/^S/{print ">"$2;print $3}' ${PREFIX}.bp.hap1.p_ctg.gfa > ${PREFIX}.bp.hap1.p_ctg.fa
+    # Convert primary contigs
+    awk '/^S/{print ">"$2;print $3}' ${PREFIX}.bp.p_ctg.gfa > ${PREFIX}.bp.p_ctg.fa
 
-# Convert haplotype 2 contigs
-awk '/^S/{print ">"$2;print $3}' ${PREFIX}.bp.hap2.p_ctg.gfa > ${PREFIX}.bp.hap2.p_ctg.fa
+    # Convert haplotype 1 contigs
+    awk '/^S/{print ">"$2;print $3}' ${PREFIX}.bp.hap1.p_ctg.gfa > ${PREFIX}.bp.hap1.p_ctg.fa
 
-# Compress
-gzip ${PREFIX}.bp.p_ctg.fa
-gzip ${PREFIX}.bp.hap1.p_ctg.fa
-gzip ${PREFIX}.bp.hap2.p_ctg.fa
+    # Convert haplotype 2 contigs
+    awk '/^S/{print ">"$2;print $3}' ${PREFIX}.bp.hap2.p_ctg.gfa > ${PREFIX}.bp.hap2.p_ctg.fa
 
-echo "$(date): GFA to FASTA conversion complete."
-ls -lh ${PREFIX}.bp.*.fa.gz
+    # Compress
+    gzip ${PREFIX}.bp.p_ctg.fa
+    gzip ${PREFIX}.bp.hap1.p_ctg.fa
+    gzip ${PREFIX}.bp.hap2.p_ctg.fa
+
+    echo "$(date): GFA to FASTA conversion complete for ${INDIR}"
+    ls -lh ${PREFIX}.bp.*.fa.gz
+done
+
+echo "$(date): All conversions complete."

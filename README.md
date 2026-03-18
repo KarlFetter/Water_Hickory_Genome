@@ -8,7 +8,7 @@ This project contains scripts and documentation for the *de novo* genome assembl
 Water Hickory/
 ├── 01_Assembly/
 │   ├── 01_raw_reads/          # BAM-to-FASTQ conversion, raw read QC
-│   ├── 02_quality_control/    # Adapter filtering, contamination screening, post-QC stats
+│   ├── 02_quality_control/    # Contamination screening, post-QC stats
 │   ├── 03_genome_size/        # k-mer based genome size estimation
 │   ├── 04_assembly/           # Genome assembly (hifiasm)
 │   ├── 05_error_correction/   # Post-assembly polishing
@@ -35,7 +35,7 @@ Water Hickory/
 ```
 
 ## Sequencing Data
-- **Platform:** PacBio Revio (Vega chemistry)
+- **Platform:** PacBio Vega
 - **Library type:** HiFi (CCS)
 - **Raw data:** ~65 Gb HiFi reads
 - **Raw data location:** `/project/tgl_seqdata/r21129_20260303_220348/1_A01/hifi_reads/`
@@ -48,16 +48,6 @@ Water Hickory/
 
 ## Workflow & Results
 - **[Assembly](01_Assembly/README.md)** — Raw read QC, assembly metrics, BUSCO scores, and figures
-
-## Assembly Workflow
-1. Convert HiFi BAM to FASTQ
-2. Raw read quality assessment (seqkit stats)
-3. Adapter filtering (HiFiAdapterFilt)
-4. Contamination screening (Centrifuge)
-5. Post-QC read assessment
-6. Genome size estimation (Jellyfish + GenomeScope2)
-7. *De novo* assembly (hifiasm)
-8. Assembly evaluation (QUAST, BUSCO, seqkit)
 
 ## Contact
 Karl Fetter — karl.fetter@usda.gov  

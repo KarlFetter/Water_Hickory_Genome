@@ -7,12 +7,14 @@
 ## Assembly Workflow
 1. Convert HiFi BAM to FASTQ
 2. Raw read quality assessment (seqkit stats)
-3. Adapter filtering (HiFiAdapterFilt)
-4. Contamination screening (Centrifuge)
-5. Post-QC read assessment
-6. Genome size estimation (Jellyfish + GenomeScope2)
-7. *De novo* assembly (hifiasm)
-8. Assembly evaluation (QUAST, BUSCO, seqkit, etc.)
+3. Contamination screening (Centrifuge)
+4. Post-QC read assessment
+5. Genome size estimation (Jellyfish + GenomeScope2)
+6. *De novo* assembly (hifiasm)
+7. Assembly evaluation (QUAST, BUSCO, seqkit, etc.)
+
+> **Note:** Adapter filtering (HiFiAdapterFilt) was omitted because the PacBio Vega
+> instrument removes adapters before outputting CCS/HiFi reads.
 
 ---
 
@@ -70,7 +72,32 @@ Full script: [01_raw_reads/01_bam_to_fastq.sh](01_raw_reads/01_bam_to_fastq.sh)
 
 ## Quality Control
 
-*Coming soon — adapter filtering (HiFiAdapterFilt) and contamination screening (Centrifuge)*
+### Contamination Screening (Centrifuge)
+
+Reads were classified against the Centrifuge `hpvf` database to identify and remove non-plant contaminants.
+
+| Metric | Value |
+|--------|-------|
+| Total reads | 4,935,257 |
+| Clean reads | 4,124,583 |
+| Contaminated reads | 810,674 (16.42%) |
+
+#### Top 10 Contaminant Species
+
+| Species | Tax ID | Rank | Genome Size | Num Reads | Unique Reads | Abundance |
+|---------|--------|------|-------------|-----------|--------------|-----------|
+| *Homo sapiens* | 9606 | species | 3,117,275,501 | 752,230 | 277,467 | 1 |
+| *Colletotrichum destructivum* | 34406 | species | 51,785,203 | 106,937 | 28,208 | 0 |
+| *Remersonia thermophila* | 72144 | species | 27,414,229 | 74,614 | 16,575 | 0 |
+| *Ascochyta rabiei* | 5454 | species | 40,901,820 | 52,910 | 11,378 | 0 |
+| *Thermothelomyces thermophilus* ATCC 42464 | 573729 | strain | 38,744,216 | 49,647 | 11,569 | 0 |
+| *Rhizoctonia solani* | 456999 | species | 40,703,773 | 37,318 | 31,989 | 0 |
+| *Botrytis cinerea* B05.10 | 332648 | strain | 42,630,066 | 36,100 | 9,406 | 0 |
+| *Puccinia triticina* | 208348 | species | 122,823,596 | 35,911 | 13,712 | 0 |
+| *Purpureocillium takamizusanense* | 2060973 | species | 35,574,015 | 33,068 | 7,304 | 0 |
+| *Pichia kudriavzevii* | 4909 | species | 10,812,555 | 22,351 | 745 | 0 |
+
+Full script: [02_quality_control/01_centrifuge.sh](02_quality_control/01_centrifuge.sh)
 
 ---
 

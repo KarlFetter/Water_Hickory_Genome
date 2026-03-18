@@ -1,0 +1,174 @@
+name	taxID	taxRank	genomeSize	numReads	numUniqueReads	abundance
+Ascomycota	4890	phylum	24338055	7946	57	0.0
+Saccharomycetales	4892	order	11252306	1162	0	0.0
+Saccharomycetaceae	4893	family	11252306	329	0	0.0
+Schizosaccharomycetaceae	4894	family	0	3	0	0.0
+Schizosaccharomyces	4895	genus	0	90	0	0.0
+Pichia kudriavzevii	4909	species	10812555	22351	745	0.0
+Kluyveromyces	4910	genus	10966467	58	0	0.0
+Pichia	4919	genus	0	180	0	0.0
+Saccharomyces	4930	genus	12058584	73	0	0.0
+Saccharomyces cerevisiae	4932	species	12157105	19	0	0.0
+Yarrowia	4951	genus	0	52	0	0.0
+Yarrowia lipolytica	4952	species	20500066	10047	3292	0.0
+Kwoniella dendrophila	4975	species	23026020	18	0	0.0
+Brettanomyces bruxellensis	5007	species	13150648	117	52	0.0
+Eurotiales	5042	order	0	3367	0	0.0
+Aspergillus	5052	genus	0	1919	0	0.0
+Aspergillus flavus	5059	species	37749288	3385	730	0.0
+Penicillium	5073	genus	0	17	0	0.0
+Talaromyces	5094	genus	0	7	0	0.0
+Hypocreales	5125	order	50358849	1818	0	0.0
+Hypocreaceae	5129	family	0	210	0	0.0
+Sordariales	5139	order	37828236	1950	0	0.0
+Sordaria	5146	genus	0	371	0	0.0
+Sordaria macrospora	5147	species	39444728	12753	4999	0.0
+Sordariaceae	5148	family	0	6	0	0.0
+Helotiales	5178	order	42630066	6504	0	0.0
+Basidiomycota	5204	phylum	21319450	343	0	0.0
+Cryptococcus	5206	genus	17002451	546	0	0.0
+Cryptococcus depauperatus	5208	species	16179376	33	0	0.0
+Tremellales	5234	order	21319450	2642	0	0.0
+Ceratobasidiaceae	5250	family	0	33	0	0.0
+Pucciniales	5258	order	0	3887	0	0.0
+Pucciniaceae	5262	family	0	1030	0	0.0
+Puccinia	5296	genus	0	556	0	0.0
+Ascochyta	5453	genus	0	1238	0	0.0
+Ascochyta rabiei	5454	species	40901820	52910	11378	0.0
+Colletotrichum	5455	genus	0	4993	0	0.0
+Fulvia fulva	5499	species	67169167	4999	1144	0.0
+Coccidioides	5500	genus	28193268	114	0	0.0
+Fusarium	5506	genus	50358849	21	0	0.0
+Metarhizium	5529	genus	0	129	0	0.0
+Trichoderma	5543	genus	0	1369	0	0.0
+Alternaria	5598	genus	0	1	0	0.0
+Vairimorpha necatrix	6039	species	15005441	421	116	0.0
+Primates	9443	order	0	12468	0	0.0
+Hominidae	9604	family	0	2684	0	0.0
+Homo	9605	genus	0	4506	0	0.0
+Homo sapiens	9606	species	3117275501	752230	277467	1
+Brettanomyces	13366	genus	0	76	0	0.0
+Brettanomyces nanus	13502	species	10186858	9141	152	0.0
+Metschnikowiaceae	27319	family	0	7	0	0.0
+Pleosporaceae	28556	family	0	1	0	0.0
+Trichocomaceae	28568	family	0	43	0	0.0
+Sclerotiniaceae	28983	family	42630066	1344	0	0.0
+Kluyveromyces lactis	28985	species	10729447	970	262	0.0
+Cercospora	29002	genus	0	49	0	0.0
+Onygenales	33183	order	28193268	2037	0	0.0
+Onygenaceae	33184	family	28193268	295	0	0.0
+Botrytis	33196	genus	42630066	423	0	0.0
+Schizosaccharomycetales	34346	order	0	169	0	0.0
+Clavicipitaceae	34397	family	0	88	0	0.0
+Colletotrichum destructivum	34406	species	51785203	106937	28208	0.0
+Chaetomiaceae	35718	family	37828236	5853	0	0.0
+Cantharellales	36064	order	0	705	0	0.0
+Penicillium digitatum	36651	species	26336737	1885	608	0.0
+Lodderomyces	36913	genus	0	930	0	0.0
+Lodderomyces elongisporus	36914	species	16086460	12592	3601	0.0
+Talaromyces marneffei	37727	species	28198338	1952	859	0.0
+Botrytis cinerea	40559	species	42630066	1407	2	0.0
+Mammalia	40674	class	0	7186	0	0.0
+Zygotorulaspora mrakii	42260	species	10450160	69	10	0.0
+Candida dubliniensis	42374	species	14618422	7	0	0.0
+Eremothecium sinecaudum	45286	species	8922523	1	0	0.0
+Alternaria dauci	48095	species	34906709	2662	532	0.0
+Malassezia	55193	genus	0	126	0	0.0
+Trichoderma atroviride	63577	species	37300646	10771	3815	0.0
+Remersonia	72143	genus	0	2	0	0.0
+Remersonia thermophila	72144	species	27414229	74614	16575	0.0
+Malassezia restricta	76775	species	7369627	23	23	0.0
+Thermothelomyces thermophilus	78579	species	38744216	1770	0	0.0
+Pleosporales	92860	order	0	7430	0	0.0
+Mycosphaerellaceae	93133	family	0	63	0	0.0
+Trichoderma asperellum	101201	species	37545380	16080	5277	0.0
+Nectriaceae	110618	family	50358849	7	0	0.0
+Saccharomyces kudriavzevii	114524	species	11913776	1	0	0.0
+Saccharomyces mikatae	114525	species	12104871	1	0	0.0
+Talaromyces rugulosus	121627	species	35758560	793	320	0.0
+Cercospora beticola	122368	species	36074111	3980	629	0.0
+Ustilaginoidea	124426	genus	0	198	0	0.0
+Vanrija pseudolonga	143232	species	24947368	1567	197	0.0
+Colletotrichum lupini	145971	species	63443975	17091	3690	0.0
+Dothideomycetes	147541	class	0	836	0	0.0
+Eurotiomycetes	147545	class	28193268	183	0	0.0
+Leotiomycetes	147548	class	42630066	26	0	0.0
+Sordariomycetes	147550	class	42005107	13433	0	0.0
+Tremellomycetes	155616	class	21319450	3834	0	0.0
+Agaricomycetes	155619	class	0	916	0	0.0
+Malasseziales	162474	order	0	670	0	0.0
+Pucciniomycetes	162484	class	0	5194	0	0.0
+Aspergillus chevalieri	182096	species	29697343	99	49	0.0
+Fusarium falciforme	195108	species	53563088	1072	217	0.0
+Coccidioides posadasii	199306	species	28193268	182	0	0.0
+Puccinia triticina	208348	species	122823596	35911	13712	0.0
+Malassezia japonica	223818	species	8433779	3	2	0.0
+Saccharomyces mikatae IFO 1815	226126	strain	12104871	287	63	0.0
+Saccharomyces kudriavzevii IFO 1802	226230	strain	11913776	308	194	0.0
+Cutaneotrichosporon cavernicola	279322	species	20237334	4856	942	0.0
+Eremothecium gossypii ATCC 10895	284811	strain	9119312	1	0	0.0
+Australozyma saopauloensis	291208	species	12068158	38	33	0.0
+Kwoniella bestiolae	324769	species	24551665	506	0	0.0
+Botrytis cinerea B05.10	332648	strain	42630066	36100	9406	0.0
+Sugiyamaella	410829	genus	0	194	0	0.0
+Trichomonascaceae	410830	family	0	8	0	0.0
+Coccidioides posadasii str. Silveira	443226	strain	28193268	8719	1839	0.0
+Kwoniella pini	453459	species	20887338	9	0	0.0
+Rhizoctonia solani	456999	species	40703773	37318	31989	0.0
+Ophiocordycipitaceae	474942	family	0	88	0	0.0
+Kwoniella	490731	genus	23046250	1191	0	0.0
+Candidozyma auris	498019	species	12249773	333	99	0.0
+Metarhizium brunneum	500148	species	37771916	2415	744	0.0
+Cryptococcus bacillisporus	552467	species	17825526	947	0	0.0
+Saccharomyces cerevisiae S288C	559292	strain	12157105	2027	396	0.0
+Kwoniella shivajii	564305	species	22171496	593	285	0.0
+Thermothelomyces thermophilus ATCC 42464	573729	strain	38744216	49647	11569	0.0
+Candida dubliniensis CD36	573826	strain	14618422	1187	205	0.0
+Thermothielavioides terrestris NRRL 8126	578455	strain	36912256	15784	3931	0.0
+Fusarium oxysporum Fo47	660027	strain	50358849	461	245	0.0
+Glomerellaceae	681950	family	0	2901	0	0.0
+Didymellaceae	683158	family	0	1416	0	0.0
+Malasseziaceae	742845	family	0	88	0	0.0
+Debaryomycetaceae	766764	family	14618422	554	0	0.0
+Sugiyamaella lignohabitans	796027	species	15938258	280	105	0.0
+Kluyveromyces marxianus DMKU3-1042	1003335	strain	10966467	469	134	0.0
+Glomerellales	1028384	order	0	67	0	0.0
+Purpureocillium	1052105	genus	0	2428	0	0.0
+Aspergillus luchuensis	1069201	species	37287723	5568	1609	0.0
+Aspergillaceae	1131492	family	0	697	0	0.0
+Pichiaceae	1156497	family	0	112	0	0.0
+Ustilaginoidea virens	1159556	species	37158136	9552	3036	0.0
+Zygotorulaspora	1196389	genus	0	24	0	0.0
+Aspergillus puulaauensis	1220207	species	34318862	492	157	0.0
+Kwoniella botswanensis	1268659	species	23007246	14148	14130	0.0
+Cryptococcus depauperatus CBS 7841	1295531	strain	16179376	1	1	0.0
+Kwoniella dendrophila CBS 6074	1295534	strain	23026020	452	146	0.0
+Kwoniella pini CBS 10737	1296096	strain	20887338	516	219	0.0
+Kwoniella bestiolae CBS 10118	1296100	strain	24551665	5114	471	0.0
+Cryptococcus bacillisporus CA1280	1296109	strain	17825526	2794	605	0.0
+Kwoniella dejecticola CBS 10117	1296121	strain	23932770	382	104	0.0
+Rhizoctonia	1322061	genus	0	44	0	0.0
+Kwoniella europaea PYCC6329	1423913	strain	22833461	44	37	0.0
+Malasseziomycetes	1538075	class	0	2945	0	0.0
+Kwoniella shandongensis	1734106	species	21305292	397	141	0.0
+Trichosporonaceae	1759442	family	0	9	0	0.0
+Lodderomyces beijingensis	1775926	species	15114296	109	41	0.0
+Cutaneotrichosporon	1838142	genus	0	549	0	0.0
+Vanrija	1851468	genus	0	1	0	0.0
+Trichosporonales	1851469	order	0	725	0	0.0
+Cryptococcus decagattii	1859122	species	17768546	4499	926	0.0
+Cryptococcaceae	1884633	family	21319450	322	0	0.0
+Malassezia vespertilionis	2020962	species	7595203	1022	170	0.0
+Purpureocillium takamizusanense	2060973	species	35574015	33068	7304	0.0
+Yamadazyma tenuis	2315449	species	10858197	38	0	0.0
+Schizosaccharomyces osmophilus	2545709	species	11416521	1233	481	0.0
+Thermothielavioides terrestris	2587410	species	36912256	498	0	0.0
+Thermothielavioides	2609811	genus	36912256	9	0	0.0
+Mycosphaerellales	2726947	order	0	1203	0	0.0
+Fulvia	2897311	genus	0	3	0	0.0
+Serinales	2916678	order	14618422	2000	0	0.0
+Dipodascomycetes	3239873	class	0	3	0	0.0
+Pichiomycetes	3239874	class	14618422	535	0	0.0
+Dipodascales	3243772	order	0	1445	0	0.0
+Pichiales	3243775	order	0	208	0	0.0
+Candidozyma	3303203	genus	0	18	0	0.0

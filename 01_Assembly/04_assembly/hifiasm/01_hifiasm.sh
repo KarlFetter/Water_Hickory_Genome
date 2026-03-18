@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=HIFIASM
+#SBATCH --job-name=CENTRI_HIFIASM
 #SBATCH --partition=ceres
 #SBATCH --time=180:00:00
 #SBATCH -N 1
