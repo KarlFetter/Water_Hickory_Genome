@@ -111,7 +111,43 @@ Full script: [02_quality_control/01_centrifuge.sh](02_quality_control/01_centrif
 
 ## Assembly
 
-*Coming soon — hifiasm de novo assembly*
+*De novo* assembly was performed using **hifiasm v0.25.0** in HiFi-only mode. Two assemblies
+were produced for comparison: one from unfiltered Vega reads and one from Centrifuge-cleaned
+reads (see Assembly Evaluation below). The unfiltered assembly was selected as the primary
+assembly based on superior contiguity and BUSCO completeness.
+
+> **Note:** Adapter filtering (HiFiAdapterFilt) was not applied — the PacBio Vega instrument
+> removes adapters prior to CCS output. Error correction was also skipped; hifiasm performs
+> internal consensus correction and HiFi reads (Q37 median) do not require pre-correction.
+
+### Command
+
+```bash
+module load hifiasm/0.25.0
+
+THREADS=64
+READS=/90daydata/tgl_seqdata/carya_acquatica/assembly/01_raw_reads/carya_aquatica_hifi.fastq.gz
+OUTDIR=/90daydata/tgl_seqdata/carya_acquatica/assembly/04_assembly/reads_from_vega
+PREFIX=carya_aquatica
+
+mkdir -p ${OUTDIR}
+cd ${OUTDIR}
+
+hifiasm \
+    -o ${PREFIX} \
+    -t ${THREADS} \
+    ${READS}
+```
+
+hifiasm outputs assembly graphs in GFA format. The primary contig assembly (`p_ctg`) was
+converted to FASTA using `awk`:
+
+```bash
+awk '/^S/{print ">"$2"\n"$3}' ${PREFIX}.bp.p_ctg.gfa > ${PREFIX}.bp.p_ctg.fa
+```
+
+Full scripts: [04_assembly/hifiasm/01_hifiasm_reads_from_vega.sh](04_assembly/hifiasm/01_hifiasm_reads_from_vega.sh) |
+[04_assembly/hifiasm/02_gfa_to_fasta.sh](04_assembly/hifiasm/02_gfa_to_fasta.sh)
 
 ---
 
