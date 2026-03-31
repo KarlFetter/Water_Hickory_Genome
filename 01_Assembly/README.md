@@ -320,5 +320,44 @@ sbatch --dependency=afterok:$JID2 03_purge.sh
 
 ### Results
 
-*Coming soon — pending completion of purge_dups run.*
+Purge_dups reduced the primary assembly from **267 contigs to 37 contigs**, removing 230
+sequences classified as haplotigs, repeats, or junk. Total assembly length decreased from
+689.25 Mb to 673.07 Mb, consistent with the removal of redundant haplotype sequence.
+The largest contig (58.09 Mb) was retained.
+
+| Metric | Pre-purge (`p_ctg`) | Post-purge (`purged.fa`) |
+| :--- | ---: | ---: |
+| Num Sequences | 267 | 37 |
+| Total Length (bp) | 689,247,006 | 673,070,817 |
+| Min Length (bp) | 11,063 | 11,063 |
+| Avg Length (bp) | 2,581,449.5 | 18,191,103.2 |
+| Max Length (bp) | 58,087,373 | 58,087,373 |
+
+#### BUSCO evaluation of `purged.fa`
+
+BUSCO v5.7.1 was run on the purged primary assembly using the `embryophyta_odb10` lineage
+(1,614 BUSCOs, gene predictor: miniprot, mode: euk_genome_min).
+
+```
+C:98.7%[S:91.0%,D:7.7%],F:0.9%,M:0.4%,n:1614,E:3.3%
+1594    Complete BUSCOs (C)
+1469    Complete and single-copy BUSCOs (S)
+ 125    Complete and duplicated BUSCOs (D)
+  15    Fragmented BUSCOs (F)
+   5    Missing BUSCOs (M)
+1614    Total BUSCO groups searched
+```
+
+The duplicated BUSCO percentage (7.7%) is **unchanged** relative to the pre-purge primary
+assembly. This indicates the duplication signal is not from residual haplotigs — purge_dups
+successfully removed redundant haplotype contigs (267 → 37). The persistent duplication
+is instead likely attributable to:
+
+- **Genuine tandem or segmental gene duplications** in the *Carya* genome
+- **Retained homeologous copies** from ancestral polyploidy events in the Juglandaceae
+- A subset of BUSCO genes that are naturally multi-copy in hickory
+
+This level of duplication (7.7%) is within normal range for diploid tree species with
+complex genomic histories and does not indicate an assembly quality problem. The assembly
+will proceed to scaffolding with `purged.fa` as the input.
 
