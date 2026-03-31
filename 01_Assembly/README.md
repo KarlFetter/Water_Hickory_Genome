@@ -11,7 +11,9 @@
 4. Post-QC read assessment
 5. Genome size estimation (Jellyfish + GenomeScope2)
 6. *De novo* assembly (hifiasm)
-7. Assembly evaluation (QUAST, BUSCO, seqkit, etc.)
+7. Haplotig purging (purge_dups)
+8. Scaffolding
+9. Assembly evaluation (QUAST, BUSCO, seqkit, etc.)
 
 > **Note:** Adapter filtering (HiFiAdapterFilt) was omitted because the PacBio Vega
 > instrument removes adapters before outputting CCS/HiFi reads.
@@ -148,7 +150,139 @@ Assemblies were made from the sequences without cleaning with centrifuge (first 
 | BUSCO Missing (%) | 0.4 | 0.4 | 0.2 | 1.0 | 2.6 | 3.3 |
 | BUSCO Erroneous (%) | 3.3 | 3.4 | 3.0 | 3.3 | 3.1 | 2.9 |
 
-> **To update:** Run `python3 05_assembly_summary.py` from the hifiasm directory on Ceres,
-> then paste the contents of `assembly_summary.md` into this section.
-
 Full script: [04_assembly/hifiasm/05_assembly_summary.py](04_assembly/hifiasm/05_assembly_summary.py)
+
+### Contig Size Distribution — Unfiltered Reads (hifiasm, no Centrifuge)
+
+The figure below shows the contig size distribution of the primary assembly produced by hifiasm
+from unfiltered Vega HiFi reads. Centrifuge contamination filtering was not applied to these reads. Contigs are
+ranked largest to smallest on the x-axis. The dashed red line marks the N50 (39.2 Mb).
+
+<p align="center">
+  <img src="../figures/contig_graph_readsFromVega/contig_graph/scaffold_histogram_logged.png" width="80%" />
+</p>
+<p align="center">
+  <em>Contig size distribution (log₁₀ y-axis) of the <em>Carya aquatica</em> primary assembly
+  (hifiasm, unfiltered reads). n = 267 contigs | Total = 689.25 Mb | N50 = 39.20 Mb.</em>
+</p>
+
+Full script: [04_assembly/hifiasm/06_scaffold_size.sh](04_assembly/hifiasm/06_scaffold_size.sh) |
+Python: [04_assembly/hifiasm/scaffold_histogram.py](04_assembly/hifiasm/scaffold_histogram.py)
+
+---
+
+## Haplotig Purging (purge_dups)
+
+### Rationale
+
+The hifiasm primary assembly (`p_ctg`) contains 267 contigs for a genome expected to span
+16 chromosomes. With 7.7% BUSCO duplicated genes, a portion of the primary assembly consists
+of haplotigs — redundant sequences representing one haplotype that were not fully separated
+into the `hap1`/`hap2` outputs. These inflate contig count and total assembly size.
+
+We used **purge_dups v1.2.6** (Guan et al. 2020) to identify and remove haplotigs based on
+read coverage. No Hi-C or reference genome is required — the approach relies on the principle
+that haplotigs are covered by only half the reads relative to true primary contigs.
+
+### Approach
+
+The workflow runs in three sequential SLURM jobs:
+
+#### Step 1 — Align HiFi reads to the primary assembly (`minimap2`, `map-hifi` preset)
+
+HiFi reads are mapped back to the primary assembly using `minimap2`. The `-x map-hifi` preset
+is tuned for PacBio HiFi read characteristics. Output is a compressed PAF file recording
+where each read aligns and at what depth.
+
+```bash
+minimap2 \
+    -xmap-hifi \
+    -t 32 \
+    carya_aquatica.bp.p_ctg.fa.gz \
+    carya_aquatica_hifi.fastq.gz \
+    | gzip -c > reads_to_assembly.paf.gz
+```
+
+Full script: [05_purge_haplotigs/01_align_reads.sh](05_purge_haplotigs/01_align_reads.sh)
+
+---
+
+#### Step 2 — Coverage statistics, cutoff calling, and self-alignment
+
+Four sub-steps run in sequence:
+
+1. **`pbcstat`** — computes per-base coverage (`PB.base.cov`) and a per-read coverage
+   histogram (`PB.stat`) from the PAF alignment
+2. **`calcuts`** — automatically fits the coverage histogram to determine low, mid, and
+   high thresholds that separate haplotigs (~½× coverage) from primary contigs (~1× coverage)
+3. **`split_fa`** — splits the primary assembly at `N`-gap runs so that self-alignment does
+   not span gap boundaries
+4. **`minimap2` (`-x asm5 -DP`)** — all-vs-all self-alignment of the split assembly to
+   detect overlapping duplicate sequences between contigs
+
+```bash
+pbcstat reads_to_assembly.paf.gz          # → PB.base.cov, PB.stat
+calcuts PB.stat > cutoffs                 # → low/mid/high coverage thresholds
+split_fa assembly.fa > assembly.split.fa  # → gap-split assembly
+minimap2 -xasm5 -DP assembly.split.fa assembly.split.fa \
+    | gzip -c > assembly.split.self.paf.gz
+```
+
+> **Note:** Review the `cutoffs` file before proceeding to step 3. If the histogram is
+> bimodal (haplotig peak visible at ~½ coverage), `calcuts` thresholds are reliable.
+> If the peak is unclear, cutoffs can be set manually with `-l/-m/-u` flags.
+
+Full script: [05_purge_haplotigs/02_coverage_cutoffs.sh](05_purge_haplotigs/02_coverage_cutoffs.sh)
+
+---
+
+#### Step 3 — Purge and extract sequences
+
+1. **`purge_dups`** — classifies contigs and contig regions using the coverage thresholds
+   and self-alignment, writing a BED file of duplicated regions (`dups.bed`). The `-2` flag
+   enables aggressive purging of partially duplicated contigs in addition to full haplotigs.
+2. **`get_seqs`** — extracts two output FASTAs: `purged.fa` (cleaned primary assembly) and
+   `hap.fa` (purged haplotigs)
+3. **`seqkit stats`** — outputs basic QC metrics for both assemblies to the job log for
+   immediate comparison against the pre-purge assembly
+
+```bash
+purge_dups -2 -T cutoffs -c PB.base.cov \
+    assembly.split.self.paf.gz > dups.bed
+
+get_seqs -e dups.bed carya_aquatica.bp.p_ctg.fa.gz
+# → purged.fa  hap.fa
+
+seqkit stats -a purged.fa
+seqkit stats -a hap.fa
+```
+
+Full script: [05_purge_haplotigs/03_purge.sh](05_purge_haplotigs/03_purge.sh)
+
+### Submitting the pipeline
+
+Jobs are submitted with SLURM dependencies so each step waits for the previous:
+
+```bash
+JID1=$(sbatch 01_align_reads.sh | awk '{print $4}')
+JID2=$(sbatch --dependency=afterok:$JID1 02_coverage_cutoffs.sh | awk '{print $4}')
+sbatch --dependency=afterok:$JID2 03_purge.sh
+```
+
+### Expected outputs
+
+| File | Description |
+|---|---|
+| `reads_to_assembly.paf.gz` | HiFi read alignments to primary assembly |
+| `PB.base.cov` | Per-base coverage across all contigs |
+| `PB.stat` | Per-read coverage histogram |
+| `cutoffs` | Low/mid/high coverage thresholds from `calcuts` |
+| `assembly.split.self.paf.gz` | Self-alignment of gap-split assembly |
+| `dups.bed` | BED file of classified duplicate regions |
+| `purged.fa` | Purged primary assembly **(use for downstream steps)** |
+| `hap.fa` | Haplotigs removed from primary assembly |
+
+### Results
+
+*Coming soon — pending completion of purge_dups run.*
+

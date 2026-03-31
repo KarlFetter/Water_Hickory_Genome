@@ -11,10 +11,9 @@ Water Hickory/
 │   ├── 02_quality_control/    # Contamination screening, post-QC stats
 │   ├── 03_genome_size/        # k-mer based genome size estimation
 │   ├── 04_assembly/           # Genome assembly (hifiasm)
-│   ├── 05_error_correction/   # Post-assembly polishing
-│   ├── 06_purge_haplotigs/    # Haplotig purging
-│   ├── 07_scaffolding/        # Chromosome-level scaffolding
-│   └── 08_evaluation/         # Assembly quality assessment
+│   ├── 05_purge_haplotigs/    # Haplotig purging (purge_dups)
+│   ├── 06_scaffolding/        # Chromosome-level scaffolding
+│   └── 07_evaluation/         # Assembly quality assessment
 ├── 02_Annotation/
 │   ├── 01_reads/              # RNA-seq / Iso-Seq data
 │   ├── 02_quality_control/    # Annotation read QC
